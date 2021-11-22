@@ -6,20 +6,23 @@ The official implementation of the paper "VTON-SCFA: A Virtual Try-On Network Ba
 ![VTON-SCFA](./teaser.png "Teaser PNG")
 ## Requirements
 - python 3.6
-- pytorch 1.0.0
-- torchvision 0.3.0
+- pytorch 1.3.0
+- torchvision 0.4.1
 - cuda 10.0
 - opencv
+- numpy
 
 To install requirements:
 ```setup
-conda create -n dcton python=3.6
-conda activate dcton
-conda install pytorch==1.0.10 torchvision==0.3.0 cuda100
+conda create -n vscfa python=3.6
+conda activate vscfa
+conda install pytorch==1.3.0 torchvision==0.4.1 cuda100
 pip install tensorboardX
-pip install opencv-python
+pip install opencv-python==4.1.1
 pip install imdb
-pip install tqdm
+pip install times==0.7
+pip install tqdm==4.49.0
+pip install numpy==1.19.2
 ```
 
 # Usage #
