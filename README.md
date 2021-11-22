@@ -3,7 +3,7 @@ The official implementation of the paper "VTON-SCFA: A Virtual Try-On Network Ba
 
 <br/><br/>
 
-![VTON-SCFA](./teaser.png "Teaser PNG")
+![VTON-SCFA](./teaser.png)
 ## Requirements
 - python 3.6
 - pytorch 1.3.0
