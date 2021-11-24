@@ -2,7 +2,6 @@
 The official implementation of the paper "VTON-SCFA: A Virtual Try-On Network Based on the Semantic Constraint and Flow Aligning".
 
 <br/><br/>
-
 ![VTON-SCFA](./teaser.png)
 ## Requirements
 - python 3.6
