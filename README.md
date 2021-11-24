@@ -1,6 +1,8 @@
 # VTON-SCFA
 The official implementation of the paper "VTON-SCFA: A Virtual Try-On Network Based on the Semantic Constraint and Flow Aligning".
 
+## The experimental code is currently being sorted out as it is rather messy.
+
 <br/><br/>
 ![VTON-SCFA](./teaser.png)
 ## Requirements
