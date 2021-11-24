@@ -10,11 +10,10 @@ import warnings
 os.environ["CUDA_VISIBLE_DEVICES"] = "5"
 from visualization import load_checkpoint, save_checkpoint
 from dataReader import DGDataset, DGDataLoader
-from unet import UnetGenerator
 from losses import VGGLoss, GicLoss, segm_unet_loss
 from config import parser
 import numpy as np
-from e_Unet import AttU_Net, Segm_Net
+from model.networks import AttU_Net, GLSP
 from flownet import FlowNet
 torch.set_printoptions(profile="full")
 warnings.filterwarnings("ignore")
@@ -182,8 +181,8 @@ def main():
     train_loader = DGDataLoader(opt, train_dataset)
 
     # create model & train & save the final checkpoint
-    if opt.stage == 'SEG':
-        model = Segm_Net(5, 21, 0, 32)
+    if opt.stage == 'SGM':
+        model = GLSP(5, 21, 0, 32)
 
         if not os.path.exists(os.path.join(opt.checkpoint_dir, opt.name)):
             os.makedirs(os.path.join(opt.checkpoint_dir, opt.name))
@@ -193,7 +192,7 @@ def main():
         train_segm(opt, train_loader, model)
         save_checkpoint(model, os.path.join(opt.checkpoint_dir, opt.name, 'seg_final.pth'))
 
-    elif opt.stage == 'GMM':
+    elif opt.stage == 'GAM':
 
         model = FlowNet(inpur_An=3, input_Bn=1, ngf=64, use_bias=True)
         if not os.path.exists(os.path.join(opt.checkpoint_dir, opt.name)):
@@ -204,7 +203,7 @@ def main():
         train_gmm(opt, train_loader, model)
         save_checkpoint(model, os.path.join(opt.checkpoint_dir, opt.name, 'gmm_final.pth'))
 
-    elif opt.stage == 'TOM':
+    elif opt.stage == 'TSM':
         model = AttU_Net(30, 3)
         if not os.path.exists(os.path.join(opt.checkpoint_dir, opt.name)):
             os.makedirs(os.path.join(opt.checkpoint_dir, opt.name))
