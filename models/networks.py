@@ -164,7 +164,7 @@ class AttU_Net(nn.Module):
         return out
 
     
-    class Segm_Net(nn.Module):
+class Segm_Net(nn.Module):
     def __init__(self, img_ch=3, output_ch=1, block_num = 6, ngf = 32):
         super(Segm_Net, self).__init__()
 
