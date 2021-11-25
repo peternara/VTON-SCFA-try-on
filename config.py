@@ -20,10 +20,10 @@ class parser:
         self.grid_path =  osp.join(self.dataroot, 'grid.png')
         if self.datamode == 'train':                            #for training keep true, for test keep false
             self.shuffle = True
-            self.batch_size = 1          
+            self.batch_size = 8          
         else:
             self.shuffle = False
-            self.batch_size = 1
+            self.batch_size = 4
         
         self.workers = 16
         self.grid_size = 5
