@@ -11,7 +11,7 @@ from visualization import load_checkpoint, save_images
 from dataReader import DGDataset, DGDataLoader
 from config import parser
 from models.networks import AttU_Net, GLSP
-from flownet import AFGAN, flow_warping
+from models.flownet import AFGAN, flow_warping
 import torch.nn.functional as F
 torch.set_printoptions(profile="full")
 warnings.filterwarnings("ignore")
