@@ -10,7 +10,7 @@ from dataReader import DGDataset, DGDataLoader
 from losses import VGGLoss, GicLoss, segm_unet_loss 
 from config import parser
 from models.networks import AttU_Net, GLSP
-from flownet import AFGAN, flow_warping
+from models.flownet import AFGAN, flow_warping
 torch.set_printoptions(profile="full")
 warnings.filterwarnings("ignore")
 
@@ -175,7 +175,7 @@ def main():
     # create model & train & save the final checkpoint
     if opt.stage == 'SGM':
 
-        model = GLSP(6, 21, 0, 32)
+        model = GLSP(6, 21, 3, 32)
 
         if not os.path.exists(os.path.join(opt.checkpoint_dir, opt.name)):
             os.makedirs(os.path.join(opt.checkpoint_dir, opt.name))
