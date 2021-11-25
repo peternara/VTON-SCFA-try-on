@@ -4,10 +4,10 @@ import torch.nn as nn
 import os
 import time
 import warnings
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 from visualization import load_checkpoint, save_checkpoint
 from dataReader import DGDataset, DGDataLoader
-from losses import VGGLoss, GicLoss, segm_unet_loss
+from losses import VGGLoss, GicLoss, segm_unet_loss 
 from config import parser
 from models.networks import AttU_Net, GLSP
 from flownet import AFGAN, flow_warping
@@ -136,9 +136,10 @@ def trainTSM(opt, train_loader, model):
         seg_shape = inputs['seg_shape'].to(device)
         part_arms = inputs['part_arms'].to(device)
 
-        sin_flow = afgan(c, im_cm)
-        sample_im_s, _ = flow_warping(c, sin_flow)
-        cw = im_cm*sample_im_s
+        with torch.no_grad():
+            sin_flow = afgan(c, im_cm)
+            sample_im_s, _ = flow_warping(c, sin_flow)
+            cw = im_cm*sample_im_s
         
         arm_par = seg_shape[:,11,:,:].unsqueeze(1) + seg_shape[:,13,:,:].unsqueeze(1)
         input_tom = torch.cat((seg_shape, im_ttp, cw, part_arms*arm_par), 1)
